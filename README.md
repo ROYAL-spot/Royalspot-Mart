@@ -20,17 +20,16 @@ A professional, full-stack e-commerce platform built for a hardware and building
 
 ## ⚙️ Installation & Setup
 1.  **Clone the project** into your `laragon/www` folder.
-2.  **Install Dependencies:** Run `composer install` to set up PHPMailer.
-3.  **Database Setup:**
-    * Create a database named `royalmart_db`.
-    * Create a table named `orders` with columns for `fullname`, `email`, `phone`, `address`, `notes`, `order_details`, and `total_amount`.
-4.  **Configuration:** Update `config.php` with your database credentials and Gmail App Password.
-5.  **Access:** Open the project via `http://localhost/Royalspot-builders`.
+2.  **Install Dependencies:** Run `composer install`.
+3.  **Database Setup:** Create a database named `royalmart_db` and an `orders` table.
+4.  **Configuration:** Create a `.env` file based on the environment variables needed for `config.php`.
+5.  **Access:** Open via `http://localhost/RoyalSpot Mart`.
 
 ## 📸 Preview
 
 <p align="center">
   <img src="preview2.jpg" alt="RoyalSpot Mart Preview" width="600">
 </p>
+
 ---
 © 2025 RoyalSpot Mart. Developed by Somila.
