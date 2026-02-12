@@ -1,4 +1,4 @@
-# 🏗️ RoyalSpot Builders - E-commerce System
+# 🏗️ RoyalSpot Mart - E-commerce System
 
 A professional, full-stack e-commerce platform built for a hardware and building supplies store. This system handles everything from product browsing to database-driven order fulfillment and email notifications.
 
@@ -30,7 +30,7 @@ A professional, full-stack e-commerce platform built for a hardware and building
 ## 📸 Preview
 
 <p align="center">
-  <img src="preview2.jpg" alt="RoyalSpot Cafe Preview" width="800">
+  <img src="preview2.jpg" alt="RoyalSpot Mart Preview" width="600">
 </p>
 ---
-© 2025 RoyalSpot Builders. Developed by Somila.
+© 2025 RoyalSpot Mart. Developed by Somila.
