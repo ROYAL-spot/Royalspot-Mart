@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RoyalSpot Mart - Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="images/RoyalMart.jpg" alt="RoyalSpot Logo" width="150" height="100" />
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contacts.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for products..." oninput="applyFilters()" />
+    <button onclick="applyFilters()">Search</button>
+  </div>
+
+  <div class="category-filter" style="text-align: center; padding: 20px;">
+    <label for="categorySelect">Filter by Category:</label>
+    <select id="categorySelect" onchange="applyFilters()">
+      <option value="all">All</option>
+      <option value="cement">Cement</option>
+      <option value="bricks">Bricks</option>
+      <option value="roofing">Roofing</option>
+      <option value="paint">Paint</option>
+      <option value="steel">Steel</option>
+      <option value="decorative">Decorative</option>
+      <option value="garden tools">Garden Tools</option>
+      <option value="hand tools">Hand Tools</option>
+      <option value="builders tools">Builders Tools</option>
+    </select>
+  </div>
+
+  <section id="products">
+    <h2>Available Products</h2>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <section id="cart">
+    <h2>Your Cart (<span id="cart-count">0</span>)</h2>
+    <ul id="cart-items"></ul>
+    <p id="cart-total">Total: R 0.00</p>
+    <button onclick="clearCart()">Clear Cart</button>
+    <button id="checkoutBtn" onclick="goToDeliveryForm()" style="margin-top: 10px;">Proceed to Delivery</button>
+  </section>
+
+  <footer>
+    <p>© 2025 RoyalSpot Mart. All Rights Reserved.</p>
+    <div>
+      <a href="contacts.html">Contact Us</a> |
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+  </footer>
+
+  <script src="product.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const productGrid = document.getElementById("productGrid");
+
+    function loadProducts() {
+      productGrid.innerHTML = ""; // Clear grid before loading
+      products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.dataset.category = product.category.toLowerCase();
+        card.dataset.name = product.name.toLowerCase();
+
+        card.innerHTML = `
+          <a href="product.html?id=${encodeURIComponent(product.id)}" style="text-decoration:none; color:inherit;">
+              <img src="${product.image}" alt="${product.name}">
+              <h3>${product.name}</h3>
+          </a>
+          <p class="price">R ${product.price.toFixed(2)}</p>
+          <div class="card-actions">
+              <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+              <button class="wishlist-btn" onclick="addToWishlist('${product.name}')">♡ Wishlist</button>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    // Initialize the shop
+    window.addEventListener('DOMContentLoaded', loadProducts);
+  </script>
+
+</body>
+</html>

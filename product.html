@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details - RoyalSpot Mart</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="product.js" defer></script>
+  <script defer>
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
+      const product = products.find(p => p.id === productId);
+
+      if (!product) {
+        document.getElementById('product-name').textContent = "Product not found";
+        return;
+      }
+
+      document.getElementById('product-image').src = product.image;
+      document.getElementById('product-image').alt = product.name;
+      document.getElementById('product-name').textContent = product.name;
+      document.getElementById('product-price').textContent = "R " + product.price.toFixed(2);
+      document.getElementById('product-description').textContent = product.description;
+      document.getElementById('product-sku').textContent = product.sku;
+
+      window.addToCartUI = function() {
+        const qty = parseInt(document.getElementById('quantity').value, 10);
+        if (qty < 1) {
+          alert("Quantity must be at least 1");
+          return;
+        }
+        for (let i = 0; i < qty; i++) {
+          addToCart(product.name, product.price);
+        }
+        alert(`${qty} x ${product.name} added to cart.`);
+      };
+
+      window.addToWishlistUI = function() {
+        addToWishlist(product.name);
+        alert(`${product.name} added to wishlist.`);
+      };
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <img src="images/RoyalMart.jpg" alt="RoyalSpot Logo" width="150" height="100" />
+    <nav class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contacts.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="product-container">
+      <div class="product-image">
+        <img id="product-image" src="" alt="Product Image" />
+      </div>
+      <div class="product-info">
+        <h1 id="product-name">Loading...</h1>
+        <p class="stock">In Stock</p>
+        <p class="price" id="product-price"></p>
+        <p id="product-description"></p>
+        <p>SKU: <span id="product-sku">--</span></p>
+
+        <div class="quantity-select">
+          Quantity:
+          <input type="number" id="quantity" min="1" value="1" />
+        </div>
+
+        <div class="actions">
+          <button onclick="addToCartUI()">Add To Cart</button>
+          <button onclick="addToWishlistUI()">♡ Wishlist</button>
+        </div>
+
+        <div class="delivery">
+          🚚 Delivery: 2-5 working days
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 RoyalSpot Mart. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
